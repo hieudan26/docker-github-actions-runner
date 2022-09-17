@@ -10,8 +10,18 @@ This will run the [new self-hosted github actions runners](https://help.github.c
 Please see [the wiki](https://github.com/myoung34/docker-github-actions-runner/wiki/Usage)
 Please read [the contributing guidelines](https://github.com/myoung34/docker-github-actions-runner/blob/master/CONTRIBUTING.md)
 
-## Notes ##
+Build Image with caching:   
+```    
+sudo docker build --build-arg ACCESS_TOKEN=<ACCESS_TOKEN> --build-arg OWNER=<owner> --build-arg  REPO=<repo> -t test .
+```
+Run image:
+```
+docker-compose up
+```
 
+## Notes ##
+JDK 17
+Maven 3.8.1
 ### Security ###
 
 It is known that currently tokens (ACCESS_TOKEN / RUNNER_TOKEN ) are not safe from exfiltration.
@@ -70,3 +80,4 @@ These containers are built via Github actions that [copy the dockerfile](https:/
 | `CONFIGURED_ACTIONS_RUNNER_FILES_DIR` | Path to use for runner data. It allows avoiding reregistration each the start of the runner. No default value. |
 | `EPHEMERAL` | Optional flag to configure runner with [`--ephemeral` option](https://docs.github.com/en/actions/hosting-your-own-runners/autoscaling-with-self-hosted-runners#using-ephemeral-runners-for-autoscaling). Ephemeral runners are suitable for autoscaling. |
 | `DISABLE_AUTO_UPDATE` | Optional environment variable to [disable auto updates](https://github.blog/changelog/2022-02-01-github-actions-self-hosted-runners-can-now-disable-automatic-updates/). Auto updates are enabled by default to preserve past behavior. Any value is considered truthy and will disable them. |
+
