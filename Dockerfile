@@ -27,10 +27,10 @@ ARG REPO
 RUN mkdir opt
 
 RUN apt-get update && apt-get install -y wget && \
-    wget https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz && \
-    tar xvf openjdk-17.0.2_linux-x64_bin.tar.gz && \
-    rm openjdk-17.0.2_linux-x64_bin.tar.gz &&\
-    mv jdk-17.0.2/ /opt/jdk-17/
+    wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.4.1%2B1/OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz && \
+    tar xvf OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz && \
+    rm OpenJDK17U-jdk_x64_linux_hotspot_17.0.4.1_1.tar.gz &&\
+    mv jdk-17.0.4.1+1/ /opt/jdk-17/
 ENV JAVA_HOME /opt/jdk-17
 ENV PATH $JAVA_HOME/bin:$PATH
 
